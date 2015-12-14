@@ -14,9 +14,26 @@ public class PlayerController : MonoBehaviour {
 	public float tilt;            //rotation of the ship
 	public Boundary boundary;    
 
+	public GameObject shot;
+	public Transform shotSpawn;
+	//public GameObject shotSpawn; //shotSpawn.transform.position
+	public float fireRate;
+	private float nextFire;
 
 	void Start(){
 		 rb = GetComponent<Rigidbody> ();	
+	}
+
+	void Update(){
+
+		Debug.Log (Time.time + " Time.time");
+		Debug.Log (nextFire + " nextFire");
+
+		if(Input.GetButton("Fire1") && Time.time > nextFire)
+		{
+			nextFire = Time.time + fireRate;
+			Instantiate(shot, shotSpawn.position, shotSpawn.rotation);
+		}
 	}
 
 	void FixedUpdate()
@@ -35,7 +52,6 @@ public class PlayerController : MonoBehaviour {
 
 		//tilt the ship when it moves, make the tilt negative so that it tilts in the right direction. 
 		rb.rotation = Quaternion.Euler (0.0f, 0.0f, rb.velocity.x * -tilt);
-
 		//rb.rotation = Quaternion.Euler (new Vector3 (0.0f, 0.0f, rb.velocity.x * -tilt));
 
 	}
