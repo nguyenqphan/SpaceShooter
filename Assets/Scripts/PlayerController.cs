@@ -26,8 +26,8 @@ public class PlayerController : MonoBehaviour {
 
 	void Update(){
 
-		Debug.Log (Time.time + " Time.time");
-		Debug.Log (nextFire + " nextFire");
+		//Debug.Log (Time.time + " Time.time");
+		//Debug.Log (nextFire + " nextFire");
 
 		if(Input.GetButton("Fire1") && Time.time > nextFire)
 		{
