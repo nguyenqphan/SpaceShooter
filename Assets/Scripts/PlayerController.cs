@@ -14,14 +14,18 @@ public class PlayerController : MonoBehaviour {
 	public float tilt;            //rotation of the ship
 	public Boundary boundary;    
 
+
 	public GameObject shot;
 	public Transform shotSpawn;
 	//public GameObject shotSpawn; //shotSpawn.transform.position
 	public float fireRate;
 	private float nextFire;
 
+	private AudioSource explosionWeapon;
+
 	void Start(){
-		 rb = GetComponent<Rigidbody> ();	
+		 rb = GetComponent<Rigidbody> ();
+		explosionWeapon = GetComponent<AudioSource>();
 	}
 
 	void Update(){
@@ -33,6 +37,8 @@ public class PlayerController : MonoBehaviour {
 		{
 			nextFire = Time.time + fireRate;
 			Instantiate(shot, shotSpawn.position, shotSpawn.rotation);
+			explosionWeapon.Play();
+
 		}
 	}
 

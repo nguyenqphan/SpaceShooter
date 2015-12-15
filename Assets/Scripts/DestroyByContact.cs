@@ -17,6 +17,7 @@ public class DestroyByContact : MonoBehaviour {
 
 		//instantiate explosion effects for the ship and asteriods before destroying them.
 		Instantiate (explosion, transform.position, transform.rotation);    
+		Debug.Log (explosion);
 
 		if(other.tag == "Player")
 			Instantiate (playerExplosion, other.transform.position, other.transform.rotation);
